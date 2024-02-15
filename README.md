@@ -1,10 +1,5 @@
 ## Compose sample application
 
-### Use with Docker Development Environments
-
-You can open this sample in the Dev Environments feature of Docker Desktop version 4.12 or later.
-
-[Open in Docker Dev Environments <img src="open_in_new.svg" alt="Open in Docker Dev Environments" align="top"/>](https://open.docker.com/dashboard/dev-envs?url=https://github.com/AutomationLover/website-visit-count/tree/main)
 
 ### Python/Flask application using a Redis database
 
@@ -30,7 +25,7 @@ services:
    web:
         build: .
         ports:
-            - "8002:8002"
+            - "8000:8000"
         volumes:
             - .:/code
         depends_on:
