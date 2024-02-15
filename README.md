@@ -20,7 +20,11 @@ For web service, you first need to build the image:
 ```bash
 docker build --target builder -t web .
 ```
-
+Check docker image built just now
+```bash
+docker images
+docker image inspect web
+```
 Then you can run the container:
 
 ```bash
