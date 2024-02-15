@@ -1,38 +1,6 @@
-## Compose sample application
 
-### Use with Docker Development Environments
-
-You can open this sample in the Dev Environments feature of Docker Desktop version 4.12 or later.
-
-[Open in Docker Dev Environments <img src="open_in_new.svg" alt="Open in Docker Dev Environments" align="top"/>](https://open.docker.com/dashboard/dev-envs?url=https://github.com/AutomationLover/website-visit-count/tree/main)
-
-
-### Use with Docker CLI
-
-For redis service:
-
-```bash
-docker run -d -p 6379:6379 --name=redis redislabs/redismod
-```
-
-For web service, you first need to build the image:
-
-```bash
-docker build --target builder -t web .
-```
-Check docker image built just now
-```bash
-docker images
-docker image inspect web
-```
-Then you can run the container:
-
-```bash
-docker run -d -p 8000:8000 -v $(pwd):/code --name=web --link redis:redismod web
-```
-
-
-### Python/Flask application using a Redis database
+## Project structure
+Python/Flask application using a Redis database
 
 Project structure:
 
@@ -63,7 +31,35 @@ services:
             - redis
 ```
 
-## Deploy with docker compose
+
+
+## Deploy application
+
+### Use with Docker CLI
+
+For redis service:
+
+```bash
+docker run -d -p 6379:6379 --name=redis redislabs/redismod
+```
+
+For web service, you first need to build the image:
+
+```bash
+docker build --target builder -t web .
+```
+Check docker image built just now
+```bash
+docker images
+docker image inspect web
+```
+Then you can run the container:
+
+```bash
+docker run -d -p 8000:8000 -v $(pwd):/code --name=web --link redis:redismod web
+```
+
+### Deploy with docker compose
 
 ```
 $ docker compose up -d
@@ -79,7 +75,8 @@ $ docker compose up -d
  ⠿ Container flask-redis-web-1    Started
 ```
 
-## Expected result
+
+#### Expected result
 
 Listing containers must show one container running and the port mapping as below:
 ```
@@ -96,7 +93,7 @@ $ curl localhost:8000
 This webpage has been viewed 2 time(s)
 ```
 
-## Monitoring Redis keys
+#### Monitoring Redis keys
 
 Connect to redis database by using ```redis-cli``` command and monitor the keys.
 ```
@@ -112,3 +109,10 @@ Stop and remove the containers
 ```
 $ docker compose down
 ```
+
+
+### Use with Docker Development Environments
+
+You can open this sample in the Dev Environments feature of Docker Desktop version 4.12 or later.
+
+[Open in Docker Dev Environments <img src="open_in_new.svg" alt="Open in Docker Dev Environments" align="top"/>](https://open.docker.com/dashboard/dev-envs?url=https://github.com/AutomationLover/website-visit-count/tree/main)
