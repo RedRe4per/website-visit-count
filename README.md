@@ -4,7 +4,29 @@
 
 You can open this sample in the Dev Environments feature of Docker Desktop version 4.12 or later.
 
-[Open in Docker Dev Environments <img src="../open_in_new.svg" alt="Open in Docker Dev Environments" align="top"/>](https://open.docker.com/dashboard/dev-envs?url=https://github.com/AutomationLover/website-visit-count/tree/main)
+[Open in Docker Dev Environments <img src="open_in_new.svg" alt="Open in Docker Dev Environments" align="top"/>](https://open.docker.com/dashboard/dev-envs?url=https://github.com/AutomationLover/website-visit-count/tree/main)
+
+
+### Use with Docker CLI
+
+For redis service:
+
+```bash
+docker run -d -p 6379:6379 --name=redis redislabs/redismod
+```
+
+For web service, you first need to build the image:
+
+```bash
+docker build --target builder -t web .
+```
+
+Then you can run the container:
+
+```bash
+docker run -d -p 8000:8000 -v $(pwd):/code --name=web --link redis:redismod web
+```
+
 
 ### Python/Flask application using a Redis database
 
