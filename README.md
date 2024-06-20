@@ -56,7 +56,7 @@ docker image inspect web
 Then you can run the container:
 
 ```bash
-docker run -d -p 8000:8000 -v $(pwd):/code --name=web --link redis:redismod web
+docker run -d -p 8000:8000 --name=web --link redis:redismod web
 ```
 
 ### Deploy with docker compose
